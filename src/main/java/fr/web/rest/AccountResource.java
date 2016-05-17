@@ -235,12 +235,12 @@ public class AccountResource {
     @Timed
     public ResponseEntity<?> requestPasswordReset(@RequestBody String mail, HttpServletRequest request) {
 
-    	User uu = new User();
+    	/*User uu = new User();
     	uu.setEmail("didierr2@gmail.com");
     	uu.setLogin("didierr2");
     	uu.setFirstName("Didier");
     	uu.setLangKey("fr");
-        mailService.sendPasswordResetMail(uu, "http://localhost:8080/");
+        mailService.sendPasswordResetMail(uu, "http://localhost:8080/");*/
     	
     	return userService.requestPasswordReset(mail)
         		.map(user -> {
