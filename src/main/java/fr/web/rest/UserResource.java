@@ -199,7 +199,7 @@ public class UserResource {
     @RequestMapping(value = "/users/{login:[_'.@a-z0-9-]+}",
         method = RequestMethod.GET,
         produces = MediaType.APPLICATION_JSON_VALUE)
-    @Timed
+    @Timed(name="login")
     public ResponseEntity<ManagedUserDTO> getUser(@PathVariable String login) {
         log.debug("REST request to get User : {}", login);
         return userService.getUserWithAuthoritiesByLogin(login)

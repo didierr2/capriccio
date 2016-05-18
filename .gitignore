@@ -1,7 +1,8 @@
 *.class
 
 # Target directory
-/target/
+/target/*
+/target/**/*
 
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/

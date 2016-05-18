@@ -32,6 +32,21 @@
 		<buffer>1</buffer> <!-- Optional, the size of a replay buffer for late joiners that will receive already emmited messages -->
 	</appender>
 
+	<!-- Logger rolling file -->
+	<appender name="TIME_BASED_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+			<file>${log.path}/timeBasedlogFile.log</file>
+	   	<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">    	
+	     		<!-- daily rollover -->
+	     		<fileNamePattern>${log.path}/timeBasedlogFile.%d{yyyy-MM-dd-HH-mm}.log</fileNamePattern>
+	     		<maxHistory>30</maxHistory>
+	   	</rollingPolicy>
+	
+	   	<encoder>
+	     		<pattern>%relative [%thread] %-5level %logger{35} - %msg%n</pattern>
+	   	</encoder>
+ 	</appender>	
+
+
     <logger name="fr.laposte.disf" level="@logback.loglevel@"/>
     <logger name="fr" level="DEBUG"/>
 
@@ -69,6 +84,7 @@
     <root level="@logback.loglevel@">
         <appender-ref ref="CONSOLE"/>
         <appender-ref ref="WEBOUT"/>
+        <appender-ref ref="TIME_BASED_FILE"/>
     </root>
 
 </configuration>

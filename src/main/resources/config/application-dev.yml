@@ -57,6 +57,9 @@ spring:
 #            hibernate.generate_statistics: true
     mail:
         host: smtp.gmail.com
+        # TLS
+        #port : 587
+        # SSL 
         port : 465
         protocol: smtps
     messages:

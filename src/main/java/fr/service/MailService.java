@@ -66,6 +66,8 @@ public class MailService {
         Security.addProvider(new com.sun.net.ssl.internal.ssl.Provider());
         final String SSL_FACTORY = "javax.net.ssl.SSLSocketFactory";
         Properties props = System.getProperties();
+        
+        props.setProperty("mail.smtp.starttls.enable", "true");
         props.setProperty("mail.smtp.socketFactory.class", SSL_FACTORY);
         props.setProperty("mail.smtp.socketFactory.fallback", "false");
         props.setProperty("mail.smtps.auth", "true");
@@ -85,9 +87,9 @@ public class MailService {
             
             message.setTo("didierr2@gmail.com");
 
-            // TODO masquer ces infos
-            javaMailSender.setUsername("capricio.co.nf@gmail.com");
-            javaMailSender.setPassword("3kgsoe0c");
+            // TODO faire plutot un authfile
+            javaMailSender.setUsername(System.getProperty("capriccio.mail.user"));
+            javaMailSender.setPassword(System.getProperty("capriccio.mail.pass"));
             
             javaMailSender.send(mimeMessage);
             log.debug("Sent e-mail to User '{}'", to);
